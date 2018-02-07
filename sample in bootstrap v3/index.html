@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+</head>
+
+<body>
+    <div class="container">
+        <form action="" class="form-horizontal" role="form">
+            <fieldset>
+                <legend>Test</legend>
+                <div class="form-group">
+                    <label for="dtp_input3" class="col-md-2 control-label">年</label>
+                    <div class="input-group date form_time_y col-md-5" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy">
+                        <input class="form-control" type="hidden" value="2017-02-01" readonly>
+                        <input class="form-control" type="text" id="dtp_input2" value="2017" readonly/>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                    </div>
+                    <br/>
+                </div>
+                <div class="form-group">
+                    <label for="dtp_input3" class="col-md-2 control-label">月</label>
+                    <div class="input-group date form_time_m col-md-5" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input3" data-link-format="mm">
+                        <input class="form-control" type="hidden" value="2011-02-01" readonly>
+                        <input class="form-control" type="text" id="dtp_input3" value="02" readonly/>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                    </div>
+                    <br/>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+    $('.form_time_y').datetimepicker({
+        language: 'zh-CN',
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 4,
+        minView: 4,
+        forceParse: 0
+    }).on('changeDate', function(ev) {
+        // if (ev.date.valueOf() < date - start - display.valueOf()) {
+        //     ....
+        // }
+        //
+        console.log(ev.date, ev.date.getFullYear(), ev.date.valueOf());
+        $('.form_time_m > input[type=hidden]').val(ev.date.getFullYear() + '-' + ev.date.getMonth() + '-' + ev.date.getDate())
+        $('.form_time_m').datetimepicker('update');
+    });
+    $('.form_time_m').datetimepicker({
+        language: 'zh-CN',
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 5,
+        minView: 1,
+        forceParse: 0
+    });
+    </script>
+</body>
+
+</html>
