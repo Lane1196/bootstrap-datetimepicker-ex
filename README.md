@@ -204,6 +204,7 @@ Accepts values of :
  * 2 or 'month' for month view (the default)
  * 3 or 'year' for the 12-month overview
  * 4 or 'decade' for the 10-year overview. Useful for date-of-birth datetimepickers.
+ * 5 or 'omonth' for the only month overview. 0,1,2,3,4 is invalid.
 
 ### minView
 
