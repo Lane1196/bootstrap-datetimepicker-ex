@@ -11,7 +11,7 @@
     <div class="container">
         <form action="" class="form-horizontal" role="form">
             <fieldset>
-                <legend>Test</legend>
+                <legend>年-月单独面板日期控件</legend>
                 <div class="form-group">
                     <label for="dtp_input3" class="col-md-2 control-label">年</label>
                     <div class="input-group date form_time_y col-md-5" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy">
@@ -48,56 +48,70 @@
     <script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
     <script type="text/javascript" src="../js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
     <script type="text/javascript">
-    var fmt = 'yyyy-MM-dd',
-        fmty = 'yyyy',
-        fmtm = 'MM',
-        now = Date.now(),
-        year = Date.format(now, fmty),
-        month = Date.format(now, fmtm),
-        $hiddenInput = $('[type=hidden]');
+    var $y = $('.form_time_y'),
+        $m = $('.form_time_m'),
+        $inputHidden = $('input[type=hidden]'),
+        now = new Date(),
+        year = Date.format(now, 'yyyy'),
+        month = Date.format(now, 'MM');
 
-
-    var getRes = function() {
-        return year + '-' + month;
+    // init
+    var setHiddenVal = function(date) {
+        date && $inputHidden.val(Date.format(date, 'yyyy-MM-dd'));
     }
 
-    $('[id=dtp_input4]').val(getRes());
-    /**
-     * init
-     */
-    $hiddenInput.val(Date.format(now, fmt));
-    $('[id=dtp_input2]').val(year);
-    $('[id=dtp_input3]').val(month);
-    $('[id=dtp_input4]').val(getRes());
+    var getRes = function() {
+        var res = '';
+        if (year) {
+            res = year;
+            if (month) {
+                res += '-' + month;
+            }
+        } else {
+            res = month;
+        }
+        return res;
+    }
 
-    $('.form_time_y').datetimepicker({
+    var setRes = function() {
+        $('#dtp_input4').val(getRes());
+    }
+
+    setHiddenVal(now);
+
+    $('#dtp_input2').val(year);
+    $('#dtp_input3').val(month);
+    setRes();
+
+    $y.datetimepicker({
         language: 'zh-CN',
         todayBtn: 1,
         autoclose: 1,
         todayHighlight: 1,
         startView: 4,
         minView: 4,
-        endDate: new Date(),
         forceParse: 0
     }).on('changeDate', function(ev) {
-        year = Date.format(ev.date, fmty);
-        $hiddenInput.val(ev.date.format(fmt));
-        $('.form_time_m').datetimepicker('update');
-        $('[id=dtp_input4]').val(getRes());
+        var date = ev.date;
+        setHiddenVal(date);
+        year = date ? Date.format(ev.date, 'yyyy') : '';
+        $m.datetimepicker('update');
+        setRes();
     });
-
-    $('.form_time_m').datetimepicker({
+    $m.datetimepicker({
         language: 'zh-CN',
         todayBtn: 1,
+        autoclose: 1,
         todayHighlight: 1,
         startView: 5,
         minView: 1,
         forceParse: 0
     }).on('changeDate', function(ev) {
-        month = Date.format(ev.date, fmtm);
-        $hiddenInput.val(ev.date.format(fmt));
-        $('.form_time_y').datetimepicker('update');
-        $('[id=dtp_input4]').val(getRes());
+        var date = ev.date;
+        setHiddenVal(date);
+        month = date ? Date.format(ev.date, 'MM') : '';
+        $y.datetimepicker('update');
+        setRes();
     });
     </script>
 </body>
