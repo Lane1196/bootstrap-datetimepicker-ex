@@ -1,4 +1,20 @@
 # Deprecation warning!
+
+基于bootstrap-datetimepicker的扩展，新增了月份的单独选择面板使年月面板分开选择
+demo路径：\bootstrap-datetimepicker-ex\sample in bootstrap v3\omonth-index.html
+示例:
+```
+$('.form_datetime').datetimepicker({
+        language: 'zh-CN',
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 5, // 仅仅显示月份面板
+        minView: 1, // startView = 5,minView和maxView都无效
+        forceParse: 0
+    });
+```
+
 We are going to move this project to [this repository](https://github.com/AuspeXeu/bootstrap-datetimepicker). Please do not file new issues or pull requests!
 
 # Project : bootstrap-datetimepicker
