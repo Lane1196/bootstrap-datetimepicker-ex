@@ -1,8 +1,10 @@
 # Deprecation warning!
 
 基于bootstrap-datetimepicker的扩展，新增了月份的单独选择面板使年月面板分开选择
+
 demo路径：\bootstrap-datetimepicker-ex\sample in bootstrap v3\omonth-index.html
-示例:
+
+## 示例:
 ```
 $('.form_datetime').datetimepicker({
         language: 'zh-CN',
@@ -15,9 +17,9 @@ $('.form_datetime').datetimepicker({
     });
 ```
 
-We are going to move this project to [this repository](https://github.com/AuspeXeu/bootstrap-datetimepicker). Please do not file new issues or pull requests!
+We are going to move this project to [this repository](https://github.com/Lane1196/bootstrap-datetimepicker-ex). Please do not file new issues or pull requests!
 
-# Project : bootstrap-datetimepicker
+# Project : bootstrap-datetimepicker-ex
 ======================================
 
 [![Build Status](https://travis-ci.org/smalot/bootstrap-datetimepicker.svg?branch=master)](https://travis-ci.org/smalot/bootstrap-datetimepicker)
@@ -28,7 +30,7 @@ We are going to move this project to [this repository](https://github.com/AuspeX
 
 # Project forked
 
-This project is a fork of [bootstrap-datepicker project](https://github.com/eternicode/bootstrap-datepicker).
+This project is a fork of [bootstrap-datepicker-ex project](https://github.com/Lane1196/bootstrap-datetimepicker-ex).
 
 
 # Home
@@ -322,7 +324,7 @@ zIndex value is being automatically calculated based on the DOM tree, where we s
 
 String. Default: Clients current timezone abbreviated name
 
-You can allow the viewer to display the date along with the given timezone. Note that this has to be used in conjunction with the `Z` format option. Example below: 
+You can allow the viewer to display the date along with the given timezone. Note that this has to be used in conjunction with the `Z` format option. Example below:
 
 
 ```javascript
